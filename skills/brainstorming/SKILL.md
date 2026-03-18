@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: "You MUST use this before creative implementation/design work - creating features, building components, adding functionality, or modifying behavior. Do NOT use it for docs-only cleanup, plan review, rule/checklist writing, or high-risk confirmation-only turns where the correct next step is a narrow review or a single confirmation question."
 ---
 
 # Brainstorming Ideas Into Designs
@@ -8,6 +8,19 @@ description: "You MUST use this before any creative work - creating features, bu
 Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
 
 Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design and get user approval.
+
+## Scope Guard
+
+Use this skill only when the turn genuinely needs open-ended design before implementation.
+
+Do not use this skill for:
+- docs-only cleanup or rule-document tightening
+- findings-first plan review
+- checklist scoring / verification turns
+- high-risk requests that should hard-stop into a single confirmation question
+- turns where the user explicitly says "只给最终结论 / 直接回答 / 不要过程 / 不要解释内部过程"
+
+If the correct next step is a narrow review, cleanup, verification, or a single high-risk confirmation question, exit this skill and use the narrower workflow instead.
 
 <HARD-GATE>
 Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
