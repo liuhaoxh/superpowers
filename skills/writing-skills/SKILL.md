@@ -93,7 +93,7 @@ skills/
 ## SKILL.md Structure
 
 **Frontmatter (YAML):**
-- Two required fields: `name` and `description` (see [agentskills.io/specification](https://agentskills.io/specification) for all supported fields)
+- Only two fields supported: `name` and `description`
 - Max 1024 characters total
 - `name`: Use letters, numbers, and hyphens only (no parentheses, special chars)
 - `description`: Third-person, describes ONLY when to use (NOT what it does)
@@ -392,6 +392,22 @@ Edit skill without testing? Same violation.
 
 **REQUIRED BACKGROUND:** The superpowers:test-driven-development skill explains why this matters. Same principles apply to documentation.
 
+## New Vs Update
+
+Always decide which lane you are in before editing:
+
+- **New skill**: write baseline scenarios from scratch, then create the minimal skill that changes behavior.
+- **Update existing skill**: treat the current skill as production code under refactor, not as a blank page.
+
+For updates:
+
+- Keep the existing skill name unless a rename is explicitly required.
+- Keep 2-3 realistic prompts that represent the skill's hot path.
+- Run those prompts as a baseline first, then again with the updated skill.
+- Preserve the behavior you still want while fixing the specific failure or ambiguity.
+
+Description optimization is a separate pass after the workflow is stable. Do not rewrite the body, the validation loop, and the description trigger all at once or you will not know what actually improved discovery.
+
 ## Testing All Skill Types
 
 Different skill types need different test approaches:
@@ -540,6 +556,7 @@ Run pressure scenario with subagent WITHOUT the skill. Document exact behavior:
 - What choices did they make?
 - What rationalizations did they use (verbatim)?
 - Which pressures triggered violations?
+- For updates, run the same 2-3 realistic prompts against the current skill first so you have a baseline to protect.
 
 This is "watch the test fail" - you must see what agents naturally do before writing the skill.
 
@@ -604,9 +621,10 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 
 **GREEN Phase - Write Minimal Skill:**
 - [ ] Name uses only letters, numbers, hyphens (no parentheses/special chars)
-- [ ] YAML frontmatter with required `name` and `description` fields (max 1024 chars; see [spec](https://agentskills.io/specification))
+- [ ] YAML frontmatter with only name and description (max 1024 chars)
 - [ ] Description starts with "Use when..." and includes specific triggers/symptoms
 - [ ] Description written in third person
+- [ ] Existing skill keeps the same name unless rename is explicitly required
 - [ ] Keywords throughout for search (errors, symptoms, tools)
 - [ ] Clear overview with core principle
 - [ ] Address specific baseline failures identified in RED
@@ -619,6 +637,7 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 - [ ] Add explicit counters (if discipline skill)
 - [ ] Build rationalization table from all test iterations
 - [ ] Create red flags list
+- [ ] Run a separate description optimization pass only after workflow/content is stable
 - [ ] Re-test until bulletproof
 
 **Quality Checks:**
